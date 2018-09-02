@@ -11,22 +11,17 @@ class Form extends Component {
     }
 
     //when the form submits send the string from the input to App.js
-    handleChange = (e) => {
-        /* console.dir(e.target.value); */
-        this.setState({
-            currentTextValue: e.target.value,
-
-        });
-    }
+    
 
     handleSubmit = (e) => {
-        console.log(this.state.currentTextValue);
-        
+/*         console.log(this.state.currentTextValue);
+ */        
         e.preventDefault();
         /*         this.state.currentTextValue; */
         this.props.addToList(this.state.currentTextValue)
         this.setState({
             currentTextValue: this.state.currentTextValue,
+            
         })
     }
 
@@ -37,16 +32,16 @@ class Form extends Component {
 
     render() {
 
-        console.log(this.state);
-        console.log(this.props);
+     /*    console.log(this.state);
+        console.log(this.props); */
         
         return (
             <div> 
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.props.onSubmit}>
                     <input 
                     type="text" 
-                    onChange={this.handleChange}
-                    value={this.state.currentTextValue} />
+                    onChange={this.props.onChange}
+                    value={this.props.currentTextValue} />
                     
                     <input 
                     type="submit" /* onSubmit={this.handleChange} *//>

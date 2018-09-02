@@ -22,10 +22,10 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-addToList = (time) => {
-    console.log(time);
+addToList = (count) => {
+  /*   console.log(time); */
     timeRef.push({
-      item: time,
+      item: count,
     })
   }
 
@@ -52,6 +52,7 @@ componentDidMount() {
 
   stopTimer() {
     clearInterval(this.timer)
+    this.state.count,
     this.setState({ 
       showResults: true,
     })
@@ -79,14 +80,8 @@ componentDidMount() {
   handleSubmit(e) {
     // prevent the page from rerendering
     e.preventDefault();
-    // check to make sure there's some content in the input
-    if (!this.state.currentTextValue.length) {
 
-      console.log(this.state);
-      
-      return;
-    }
-
+    
     const newindividualListItem = {
       currentTextValue: this.state.currentTextValue,
       id: Date.now(),
@@ -97,11 +92,15 @@ componentDidMount() {
       listOfNames: prevState.listOfNames.concat(newindividualListItem),
       currentTextValue: ""
     }));
+
   
     
 
   }    
   render = () => {
+
+    console.log(this.state);
+    
     return (  
       <div className="App">
         <div className='Timer'>
@@ -123,11 +122,13 @@ componentDidMount() {
         <div className ="finalTime">
           <Form
             onSubmit={this.handleSubmit} 
+            onChange={this.handleChange}
+            currentTextValue={this.state.currentTextValue}
             addToList={this.addToList} 
-            count={this.state.count}
+            listItems={this.state.listOfNames}
             showResults={this.state.showResults} />
 
-          <Scores 
+          <Scores
             listOfNames={this.state.listOfNames} />
           
         </div>
