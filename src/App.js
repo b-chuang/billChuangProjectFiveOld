@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
-import firebase from '../src/firebase'
 
 /* COMPONENTS */
 import Gallery from './Components/Gallery';
 import Form from './Components/Form';
 import Scores from './Components/Scores';
 
+/* FIREBASE */
+import firebase from "../src/firebase";
 const timeRef = firebase.database().ref('/count');
+
 
 class App extends Component {
   constructor (props){
