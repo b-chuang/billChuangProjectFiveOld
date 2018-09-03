@@ -8,9 +8,8 @@ class Scores extends React.Component {
                 <ul>
                     {this.props.listOfNames.map(individualListItem => (
                         <li key={individualListItem.id}>
-                            👀{individualListItem.currentTextValue} &#32; ⏲️{
-                                individualListItem.count
-                            }
+                            <h3>NAME:</h3>{individualListItem.currentTextValue} &#32; <h3>TIME:</h3> 
+                            {individualListItem.count}
                         </li>
                     ))}
                 </ul>

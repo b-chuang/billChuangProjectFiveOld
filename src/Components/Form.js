@@ -52,7 +52,7 @@ class Form extends Component {
                     ) : null
                 }
 
-                <h1>Latest brushers</h1>
+                <h2>Latest brushers</h2>
                 
             </div>
         )

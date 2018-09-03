@@ -25,7 +25,7 @@ class App extends Component {
 addToList = (count) => {
   /*   console.log(time); */
     timeRef.push({
-      item: count,
+      item: count
     })
   }
 
@@ -87,10 +87,14 @@ componentDidMount() {
       id: Date.now(),
       count: this.state.count
     };
+
+    const timeRef = firebase.database().ref();
+      timeRef.push(newindividualListItem);
+  
     
     this.setState(prevState => ({
       listOfNames: prevState.listOfNames.concat(newindividualListItem),
-      currentTextValue: ""
+      currentTextValue: "",
     }));
 
   
@@ -113,10 +117,8 @@ componentDidMount() {
         </div>
 
         <div className ="Gallery">
-        <Gallery count={this.state.count}/>
-        </div>
-        <div>
-          {/* {time} */}
+          <Gallery 
+          count={this.state.count}/>
         </div>
 
         <div className ="finalTime">
@@ -126,6 +128,7 @@ componentDidMount() {
             currentTextValue={this.state.currentTextValue}
             addToList={this.addToList} 
             listItems={this.state.listOfNames}
+            placeholder="Enter your name"
             showResults={this.state.showResults} />
 
           <Scores
